@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">App Title</string>
+    <string name="CreateAccount">Create an Account</string>
 
     <string name="Username">User Name</string>
     <string name="Password">Password</string>
     <string name="Button1">Create an Account</string>
+    <string name="Button2">Create Account</string>
+    <string name="Button3">Use my Location</string>
+    <string name="Button4">Log In</string>
+
+    <string name="Search">Search a Location</string>
+
 
 </resources>

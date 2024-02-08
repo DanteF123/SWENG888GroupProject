@@ -7,11 +7,11 @@
     android:background="@color/green">
 
     <TextView
-        android:id="@+id/createAccountTextView"
+        android:id="@+id/homeScreenAppTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="54dp"
-        android:text="@string/CreateAccount"
+        android:text="@string/app_name"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="32sp"
@@ -20,63 +20,54 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/createAccountUserNameTextView"
+        android:id="@+id/searchTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/Username"
+        android:layout_marginTop="153dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/Search"
         android:textColor="#FFFFFF"
         android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextCreateAccountUsername"
-        app:layout_constraintStart_toStartOf="@+id/editTextCreateAccountUsername" />
+        app:layout_constraintBottom_toTopOf="@+id/homeScreenSearchEditText"
+        app:layout_constraintStart_toStartOf="@+id/homeScreenSearchEditText"
+        app:layout_constraintTop_toBottomOf="@+id/homeScreenAppTitleTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <EditText
-        android:id="@+id/logInEditTextPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="49dp"
-        android:background="#E3D7D7"
-        android:hint="Enter your password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCreateAccountPassword" />
-
-    <TextView
-        android:id="@+id/editTextCreateAccountPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
-        android:text="@string/Password"
-        android:textColor="#FFFFFF"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@+id/logInEditTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCreateAccountUsername" />
-
-    <EditText
-        android:id="@+id/editTextCreateAccountUsername"
+        android:id="@+id/homeScreenSearchEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="49dp"
         android:layout_marginTop="284dp"
         android:layout_marginEnd="49dp"
         android:background="#E3D7D7"
-        android:hint="Enter your username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Button
-        android:id="@+id/CreateAccount"
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
-        android:text="@string/Button2"
+        android:layout_marginBottom="40dp"
+        android:text="Or"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/logInCreateAccountButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/logInCreateAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="83dp"
+        android:text="@string/Button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logInEditTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/homeScreenSearchEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
