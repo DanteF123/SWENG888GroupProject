@@ -10,6 +10,10 @@
     <string name="Button4">Log In</string>
 
     <string name="Search">Search a Location</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="or">Or</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 
 </resources>
