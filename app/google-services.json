@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "343883765946",
+    "project_id": "sweng888groupproject",
+    "storage_bucket": "sweng888groupproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343883765946:android:0eb3373ac337b88bbe8a83",
+        "android_client_info": {
+          "package_name": "com.example.groupproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTDRyijnaucdYUvq4wx0DrZz8atqgHocg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
