@@ -1,6 +1,10 @@
 plugins {
     id("com.android.application")
+<<<<<<< HEAD
+    id("com.google.gms.google-services")
+=======
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+>>>>>>> main
 }
 
 android {
@@ -42,6 +46,20 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+
+    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+    implementation("com.google.firebase:firebase-analytics")
+
+    //Firestore
+    implementation("com.google.firebase:firebase-firestore")
+
+    //Auth
+    implementation("com.google.firebase:firebase-auth")
+
+    //Storage
+    implementation("com.google.firebase:firebase-storage")
+
 }
 
 secrets {

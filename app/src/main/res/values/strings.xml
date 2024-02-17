@@ -10,10 +10,15 @@
     <string name="Button4">Log In</string>
 
     <string name="Search">Search a Location</string>
+
+    <string name="Email">Email</string>
+    <string name="Favorites">Favorites</string>
+
     <string name="enter_your_password">Enter your password</string>
     <string name="enter_your_username">Enter your username</string>
     <string name="or">Or</string>
     <string name="title_activity_maps">MapsActivity</string>
+
 
     <string name="maps_api_key">AIzaSyCjcrrs16eQfj1xCBV_tVkAecED6UaV1kM</string>
     <string name="option_get_place">Get Place</string>

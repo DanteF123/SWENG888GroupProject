@@ -19,6 +19,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <EditText
+        android:id="@+id/createAccountEditTextEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="48dp"
+        android:background="#E3D7D7"
+        android:hint="Enter your email"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountUserNameTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/createAccountUserNameTextView"
         android:layout_width="wrap_content"
@@ -31,7 +45,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextCreateAccountUsername" />
 
     <EditText
-        android:id="@+id/logInEditTextPassword"
+        android:id="@+id/createAccountPW"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="49dp"
@@ -50,8 +64,11 @@
         android:layout_marginTop="47dp"
         android:text="@string/Password"
         android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/logInEditTextPassword"
+
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="@+id/createAccountPW"
+
+
         app:layout_constraintTop_toBottomOf="@+id/editTextCreateAccountUsername" />
 
     <EditText
@@ -76,7 +93,7 @@
         android:text="@string/Button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logInEditTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/createAccountPW" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
