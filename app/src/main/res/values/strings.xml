@@ -10,6 +10,8 @@
     <string name="Button4">Log In</string>
 
     <string name="Search">Search a Location</string>
+    <string name="Email">Email</string>
+
 
 
 </resources>

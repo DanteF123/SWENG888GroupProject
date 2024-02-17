@@ -6,6 +6,40 @@
     android:layout_height="match_parent"
     android:background="@color/green">
 
+
+    <TextView
+        android:id="@+id/logInEmailTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="15dp"
+        android:text="Email"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/logInEditTextEmail"
+        app:layout_constraintBottom_toTopOf="@id/logInEditTextEmail"
+
+/>
+
+    <EditText
+        android:id="@+id/logInEditTextEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="49dp"
+        android:background="#E3D7D7"
+        android:hint="Enter your email"
+        app:layout_constraintBottom_toTopOf="@+id/homeScreenSearchEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logInAppTitle"
+        app:layout_constraintVertical_bias="0.373" />
+
     <TextView
         android:id="@+id/logInAppTitle"
         android:layout_width="0dp"
@@ -34,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logInAppTitle" />
 
     <EditText
-        android:id="@+id/logInEditTextPassword"
+        android:id="@+id/loginEditTextPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="49dp"
@@ -54,22 +88,23 @@
         android:text="@string/Password"
         android:textColor="#FFFFFF"
         android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@+id/logInEditTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/loginEditTextPassword"
         app:layout_constraintTop_toBottomOf="@+id/homeScreenSearchEditText" />
+
 
     <EditText
         android:id="@+id/homeScreenSearchEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="49dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="288dp"
         android:layout_marginEnd="49dp"
         android:background="#E3D7D7"
         android:hint="Enter your username"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/textView3"
@@ -92,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logInEditTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/loginEditTextPassword" />
 
     <Button
         android:id="@+id/logInLogInButton"

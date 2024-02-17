@@ -40,6 +40,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         createButton = findViewById(R.id.CreateAccount);
         password_create = findViewById(R.id.createAccountPW);
+        email_create = findViewById(R.id.createAccountEditTextEmail);
         user_create = findViewById(R.id.editTextCreateAccountUsername);
 
         //Firebase auth
