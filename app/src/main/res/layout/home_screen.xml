@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green">
+    android:background="@color/green"
+    tools:context=".HomeActivity">
 
     <TextView
         android:id="@+id/homeScreenAppTitleTextView"
@@ -27,7 +28,7 @@
         android:layout_marginBottom="15dp"
         android:text="@string/Search"
         android:textColor="#FFFFFF"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/homeScreenSearchEditText"
         app:layout_constraintStart_toStartOf="@+id/homeScreenSearchEditText"
         app:layout_constraintTop_toBottomOf="@+id/homeScreenAppTitleTextView"
@@ -52,15 +53,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:text="Or"
+        android:text="@+id/or"
         android:textColor="#FFFFFF"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/logInCreateAccountButton"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/UseMyLocationButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/logInCreateAccountButton"
+        android:id="@+id/UseMyLocationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="83dp"
