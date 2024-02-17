@@ -7,22 +7,21 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
-    private Button mLoginButton;
+public class HomeActivity extends AppCompatActivity {
+
+    private Button mUseMyLocationButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.log_in_screen);
+        setContentView(R.layout.home_screen);
 
-        mLoginButton = (Button) findViewById(R.id.logInLogInButton);
-
-        mLoginButton.setOnClickListener(new View.OnClickListener() {
+        mUseMyLocationButton = (Button) findViewById(R.id.UseMyLocationButton);
+        mUseMyLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                Intent intent = new Intent(view.getContext(), MapsActivity.class);
                 startActivity(intent);
             }
         });
-
     }
 }

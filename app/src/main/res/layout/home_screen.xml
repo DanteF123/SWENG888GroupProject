@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green">
+    android:background="@color/green"
+    tools:context=".HomeActivity">
 
     <TextView
         android:id="@+id/homeScreenAppTitleTextView"
@@ -55,12 +56,12 @@
         android:text="@+id/or"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/logInCreateAccountButton"
+        app:layout_constraintBottom_toTopOf="@+id/UseMyLocationButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/logInCreateAccountButton"
+        android:id="@+id/UseMyLocationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="83dp"
