@@ -1,0 +1,9 @@
+[user]
+        name = Sam Cramer
+        email = samuel.c.cramer@gmail.com
+[core]
+        editor = 'C:/Program Files/Notepad++/notepad++.exe' -multiinst -notabbar -nosession -noPlugin
+[github]
+        user = scram91
+[credential]
+        helper = wincred
