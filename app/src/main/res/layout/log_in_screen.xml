@@ -61,7 +61,7 @@
         android:layout_marginBottom="15dp"
         android:text="@string/Username"
         android:textColor="#FFFFFF"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/homeScreenSearchEditText"
         app:layout_constraintEnd_toEndOf="@+id/logInPasswordTextView"
         app:layout_constraintStart_toStartOf="@+id/homeScreenSearchEditText"
@@ -75,7 +75,7 @@
         android:layout_marginTop="17dp"
         android:layout_marginEnd="49dp"
         android:background="#E3D7D7"
-        android:hint="Enter your password"
+        android:hint="@string/enter_your_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logInPasswordTextView" />
@@ -87,8 +87,11 @@
         android:layout_marginTop="60dp"
         android:text="@string/Password"
         android:textColor="#FFFFFF"
+
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="@+id/loginEditTextPassword"
+
+
         app:layout_constraintTop_toBottomOf="@+id/homeScreenSearchEditText" />
 
 
@@ -100,7 +103,7 @@
         android:layout_marginTop="288dp"
         android:layout_marginEnd="49dp"
         android:background="#E3D7D7"
-        android:hint="Enter your username"
+        android:hint="@string/enter_your_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="18dp"
-        android:text="Or"
+        android:text="@string/or"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/logInCreateAccountButton"
