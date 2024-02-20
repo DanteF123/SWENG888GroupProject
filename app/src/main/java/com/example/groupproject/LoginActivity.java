@@ -8,8 +8,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -57,6 +59,17 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean loggedoOut = getIntent().getBooleanExtra("logout", false);
+
+        if (loggedoOut) {
+            Toast.makeText(LoginActivity.this,"Logged out successfully", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
     //method to log in
     private void loginEmailPassUser(
             String email, String pwd
@@ -84,5 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }
