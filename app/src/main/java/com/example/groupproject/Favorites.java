@@ -1,21 +1,38 @@
 package com.example.groupproject;
 
+
 import android.os.Bundle;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+
+
 
 public class Favorites extends AppCompatActivity {
-
     private ListView listView;
     private ParkAdapter adapter;
     private List<Park> parkList;
+    Button logOut;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorites);
+
 
         // Initialize the ListView
         listView = findViewById(R.id.park_list_item);
@@ -28,7 +45,24 @@ public class Favorites extends AppCompatActivity {
 
         // Set the adapter to the ListView
         listView.setAdapter(adapter);
+
+//        logOut = findViewById(R.id.logOutButton);
+
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Call the signOut method when you want to sign the user out
+                signOut();
+            }
+        });
+
+
     }
+
+
 
     // Method to create fake park data
     private List<Park> createFakeParkList() {
@@ -39,4 +73,17 @@ public class Favorites extends AppCompatActivity {
         parkList.add(new Park("Banff National Park","Alberta, Canada","Rocky Mountain park offering year-round activities & glacial lakes such as Lake Louise, also a town. "));
         return parkList;
     }
+
+    private void signOut() {
+        mAuth.signOut();
+        Intent i = new Intent(Favorites.this, LoginActivity.class);
+        i.putExtra("logout", true);
+        startActivity(i);
+    }
 }
+
+
+
+
+
+
