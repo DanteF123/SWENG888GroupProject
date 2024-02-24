@@ -24,8 +24,6 @@ public class Favorites extends AppCompatActivity {
     private ListView listView;
     private ParkAdapter adapter;
     private List<Park> parkList;
-    Button logOut;
-    private FirebaseAuth mAuth;
 
 
     @Override
@@ -46,18 +44,7 @@ public class Favorites extends AppCompatActivity {
         // Set the adapter to the ListView
         listView.setAdapter(adapter);
 
-//        logOut = findViewById(R.id.logOutButton);
 
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-
-        logOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Call the signOut method when you want to sign the user out
-                signOut();
-            }
-        });
 
 
     }
@@ -74,12 +61,6 @@ public class Favorites extends AppCompatActivity {
         return parkList;
     }
 
-    private void signOut() {
-        mAuth.signOut();
-        Intent i = new Intent(Favorites.this, LoginActivity.class);
-        i.putExtra("logout", true);
-        startActivity(i);
-    }
 }
 
 
