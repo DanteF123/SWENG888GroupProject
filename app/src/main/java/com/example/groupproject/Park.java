@@ -12,7 +12,7 @@ public class Park implements Serializable {
         this.name = name;
         this.address = city;
         this.description = description;
-        this.favorite = false;
+        this.favorite = true;
     }
 
     public String getName() {
