@@ -30,7 +30,6 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
     @Override
     public ParkRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorite_list_item, parent, false);
-
         return new ViewHolder(itemView);
 
     }
@@ -40,14 +39,7 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
         Park park = parks.get(position);
         holder.title.setText(park.getName());
         holder.description.setText(park.getDescription());
-
-        if (park.isFavorite()){
-            holder.favorite.setBackgroundResource(R.drawable.favorite_filled);
-        }
-        else{
-            holder.favorite.setBackgroundResource(R.drawable.favorite_empty);
-        }
-
+        holder.favorite.setImageResource(R.drawable.favorite_filled);
 
 
 
@@ -67,16 +59,23 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
             title=itemView.findViewById(R.id.textViewParkName);
             description = itemView.findViewById(R.id.textViewParkDesc);
             favorite=itemView.findViewById(R.id.filledFavorite);
+
             favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    Park park = parks.get(position);
-                    park.setFavorite(false);
+
+                    //if you click the favorite button, remove the item from the list.
+                    changeFavorite(getAdapterPosition());
+                    notifyDataSetChanged();
                 }
             });
 
         }
 
     }
+    public void changeFavorite(int index){
+        parks.remove(parks.get(index));
+
+    }
+
 }

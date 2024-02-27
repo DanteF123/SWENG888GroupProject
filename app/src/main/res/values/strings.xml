@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App Title</string>
+    <string name="app_name">Parkfinder App</string>
     <string name="CreateAccount">Create an Account</string>
 
     <string name="Username">User Name</string>
