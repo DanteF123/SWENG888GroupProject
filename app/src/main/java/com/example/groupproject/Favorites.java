@@ -52,9 +52,3 @@ public class Favorites extends AppCompatActivity {
 
 
 }
-
-
-
-
-
-
