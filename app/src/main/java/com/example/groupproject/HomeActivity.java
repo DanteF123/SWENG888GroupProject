@@ -7,8 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class HomeActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
     private Button mUseMyLocationButton,searchButton, favorites;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         mUseMyLocationButton = (Button) findViewById(R.id.UseMyLocationButton);
         searchButton = (Button) findViewById(R.id.searchButton);
         favorites = (Button) findViewById(R.id.favoritesButton);
+        mAuth = FirebaseAuth.getInstance();
         mUseMyLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,5 +45,12 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void signOut(){
+        mAuth.signOut();
+        Intent i = new Intent(HomeActivity.this, LoginActivity.class);
+        i.putExtra("logout", true);
+        startActivity(i);
     }
 }
