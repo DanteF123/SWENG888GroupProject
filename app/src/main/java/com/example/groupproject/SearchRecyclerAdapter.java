@@ -33,7 +33,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
     @NonNull
     @Override
     public SearchRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorite_list_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_list_item, parent, false);
         return new ViewHolder(itemView);
 
     }
@@ -43,7 +43,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
     public void onBindViewHolder(@NonNull SearchRecyclerAdapter.ViewHolder holder, int position) {
         Park park = parks.get(position);
         holder.title.setText(park.getName());
-        holder.description.setText(park.getDescription());
+        holder.address.setText(park.getAddress());
 
         if(parks.get(position).isFavorite()){
             holder.favorite.setImageResource(R.drawable.favorite_filled);
@@ -60,13 +60,13 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView title,description;
+        TextView title,address;
         ImageButton favorite;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title=itemView.findViewById(R.id.textViewParkName);
-            description = itemView.findViewById(R.id.textViewParkDesc);
+            address = itemView.findViewById(R.id.textViewParkLoc);
             favorite=itemView.findViewById(R.id.filledFavorite);
 
             favorite.setOnClickListener(new View.OnClickListener() {

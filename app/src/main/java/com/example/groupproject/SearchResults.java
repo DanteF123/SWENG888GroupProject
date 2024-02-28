@@ -66,7 +66,6 @@ public class SearchResults extends AppCompatActivity {
             }
         });
 
-
     }
 
 

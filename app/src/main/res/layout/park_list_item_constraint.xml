@@ -26,11 +26,11 @@
 
 
     <TextView
-        android:id="@+id/textViewParkDesc"
+        android:id="@+id/textViewParkLoc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Park Description"
+        android:text="Park City"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         android:textStyle="bold"

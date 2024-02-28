@@ -38,7 +38,7 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
     public void onBindViewHolder(@NonNull ParkRecyclerAdapter.ViewHolder holder, int position) {
         Park park = parks.get(position);
         holder.title.setText(park.getName());
-        holder.description.setText(park.getDescription());
+        holder.address.setText(park.getAddress());
         holder.favorite.setImageResource(R.drawable.favorite_filled);
 
 
@@ -51,13 +51,13 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView title,description;
+        TextView title,address;
         ImageButton favorite;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title=itemView.findViewById(R.id.textViewParkName);
-            description = itemView.findViewById(R.id.textViewParkDesc);
+            address = itemView.findViewById(R.id.textViewParkLoc);
             favorite=itemView.findViewById(R.id.filledFavorite);
 
             favorite.setOnClickListener(new View.OnClickListener() {
