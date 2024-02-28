@@ -12,12 +12,13 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private Button mUseMyLocationButton,searchButton, favorites;
+    private Button mUseMyLocationButton,searchButton, favorites, logOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
 
+        logOut=(Button) findViewById(R.id.logOutButton);
         mUseMyLocationButton = (Button) findViewById(R.id.UseMyLocationButton);
         searchButton = (Button) findViewById(R.id.searchButton);
         favorites = (Button) findViewById(R.id.favoritesButton);
@@ -43,6 +44,13 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SearchResults.class);
                 startActivity(intent);
+            }
+        });
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut();
             }
         });
     }
