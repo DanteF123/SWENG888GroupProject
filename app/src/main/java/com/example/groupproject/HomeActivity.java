@@ -7,45 +7,39 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 public class HomeActivity extends AppCompatActivity {
 
-    private Button mUseMyLocationButton, logOutButton;
-    private FirebaseAuth mAuth;
+    private Button mUseMyLocationButton,searchButton, favorites;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
 
         mUseMyLocationButton = (Button) findViewById(R.id.UseMyLocationButton);
+        searchButton = (Button) findViewById(R.id.searchButton);
+        favorites = (Button) findViewById(R.id.favoritesButton);
         mUseMyLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), MapsActivity.class);
                 startActivity(intent);
-
             }
         });
 
-        logOutButton = findViewById(R.id.logOutButton);
-
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-
-        logOutButton.setOnClickListener(new View.OnClickListener() {
+        favorites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Call the signOut method when you want to sign the user out
-                signOut();
+                Intent intent = new Intent(v.getContext(), Favorites.class);
+                startActivity(intent);
             }
         });
-    }
 
-    private void signOut() {
-        mAuth.signOut();
-        Intent i = new Intent(HomeActivity.this, LoginActivity.class);
-        i.putExtra("logout", true);
-        startActivity(i);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SearchResults.class);
+                startActivity(intent);
+            }
+        });
     }
 }
