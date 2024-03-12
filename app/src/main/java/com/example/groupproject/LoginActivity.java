@@ -62,9 +62,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        boolean loggedoOut = getIntent().getBooleanExtra("logout", false);
+        boolean loggedOut = getIntent().getBooleanExtra("logout", false);
 
-        if (loggedoOut) {
+        if (loggedOut) {
             Toast.makeText(LoginActivity.this,"Logged out successfully", Toast.LENGTH_LONG).show();
         }
     }

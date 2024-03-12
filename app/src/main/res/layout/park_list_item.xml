@@ -24,6 +24,8 @@
         android:textSize="14sp"
         android:text="Park Address" />
 
+
+
     <ImageView
         android:id="@+id/imageViewFavorite"
         android:layout_width="wrap_content"
