@@ -1,14 +1,15 @@
 package com.example.groupproject;
-
 import android.content.Context;
+
+import androidx.annotation.NonNull;
+
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.Task;
@@ -28,12 +29,13 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class AutoCompleteAdapter extends ArrayAdapter<AutocompletePrediction> implements Filterable {
+    private static final String TAG = "AutoCompleteAdapter";
     private List<AutocompletePrediction> mResultList;
-    private final PlacesClient mPlacesClient;
+    private final PlacesClient placesClient;
 
     AutoCompleteAdapter(Context context, PlacesClient placesClient) {
         super(context, android.R.layout.simple_expandable_list_item_2, android.R.id.text1);
-        this.mPlacesClient = placesClient;
+        this.placesClient = placesClient;
     }
 
     @Override
@@ -55,9 +57,9 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutocompletePrediction> im
 
         TextView textView1 = row.findViewById(android.R.id.text1);
         TextView textView2 = row.findViewById(android.R.id.text2);
-        if(item != null) {
+        if (item != null) {
             textView1.setText(item.getPrimaryText(null));
-            textView2.setText(item.getPrimaryText(null));
+            textView2.setText(item.getSecondaryText(null));
         }
 
         return row;
@@ -72,9 +74,13 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutocompletePrediction> im
 
                 FilterResults results = new FilterResults();
 
+                // We need a separate list to store the results, since
+                // this is run asynchronously.
                 List<AutocompletePrediction> filterData = new ArrayList<>();
 
+                // Skip the autocomplete query if no constraints are given.
                 if (charSequence != null) {
+                    // Query the autocomplete API for the (constraint) search string.
                     filterData = getAutocomplete(charSequence);
                 }
 
@@ -87,6 +93,7 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutocompletePrediction> im
 
                 return results;
             }
+
             @SuppressWarnings("unchecked")
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults results) {
@@ -104,6 +111,15 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutocompletePrediction> im
                     e.printStackTrace();
                 }
             }
+
+            private void notifyDataSetInvalidated() {
+                Log.d(TAG, "Invalid");
+            }
+
+            private void notifyDataSetChanged() {
+                Log.d(TAG, "Changed");
+            }
+
             @Override
             public CharSequence convertResultToString(Object resultValue) {
                 // Override this method to display a readable result in the AutocompleteTextView
@@ -136,7 +152,7 @@ public class AutoCompleteAdapter extends ArrayAdapter<AutocompletePrediction> im
                         .setTypeFilter(TypeFilter.ADDRESS);
 
         Task<FindAutocompletePredictionsResponse> results =
-                mPlacesClient.findAutocompletePredictions(requestBuilder.build());
+                placesClient.findAutocompletePredictions(requestBuilder.build());
 
 
         //Wait to get results.
