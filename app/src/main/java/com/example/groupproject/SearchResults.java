@@ -42,7 +42,6 @@ public class SearchResults extends AppCompatActivity {
         favoritesButton = findViewById(R.id.favoriteButton);
 
         recyclerView=findViewById(R.id.searchRecyclerView);
-        //
         parkList = createFakeParkList();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);

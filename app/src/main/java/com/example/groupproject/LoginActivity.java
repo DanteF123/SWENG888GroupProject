@@ -56,9 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     passEt.getText().toString().trim()
             );
         });
-
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -68,8 +66,6 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this,"Logged out successfully", Toast.LENGTH_LONG).show();
         }
     }
-
-
     //method to log in
     private void loginEmailPassUser(
             String email, String pwd
@@ -89,15 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent i = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(i);
                 }
-
-
             });
-
         }
-
-
     }
-
-
-
 }
