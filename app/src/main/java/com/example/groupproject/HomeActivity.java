@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,10 +30,12 @@ public class HomeActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private Button mUseMyLocationButton,searchButton, favorites, logOut;
-    AutoCompleteTextView autoCompleteTextView;
+    private SearchView mSearchView;
     AutoCompleteAdapter adapter;
     TextView responseView;
     PlacesClient placesClient;
+
+    private String searchLocationName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +62,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
+     searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), SearchResults.class);
+                Intent intent = new Intent(v.getContext(), MapsActivity.class);
+                intent.putExtra("location", getLocationName());
                 startActivity(intent);
             }
         });
@@ -88,15 +92,35 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         placesClient = Places.createClient(this);
-        initAutoCompleteTextView();
+        mSearchView = findViewById(R.id.homeScreenSearchEditText);
+        createSearchViewListener();
     }
-    private void initAutoCompleteTextView() {
 
-        autoCompleteTextView = findViewById(R.id.homeScreenSearchEditText);
-        autoCompleteTextView.setThreshold(1);
-        autoCompleteTextView.setOnItemClickListener(autocompleteClickListener);
-        adapter = new AutoCompleteAdapter(this, placesClient);
-        autoCompleteTextView.setAdapter(adapter);
+    private void createSearchViewListener() {
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+
+                String locationName = mSearchView.getQuery().toString();
+                setLocation(locationName);
+                Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
+                intent.putExtra("location", getLocationName());
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+    }
+
+    private void setLocation(String location) {
+        searchLocationName = location;
+    }
+    private String getLocationName(){
+        return searchLocationName;
     }
 
     private final AdapterView.OnItemClickListener autocompleteClickListener = new AdapterView.OnItemClickListener() {

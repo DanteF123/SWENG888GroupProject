@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green"
-    tools:context=".LocationSearchActivity">
+    tools:context=".HomeActivity">
 
     <TextView
         android:id="@+id/homeScreenAppTitleTextView"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/homeScreenAppTitleTextView"
         app:layout_constraintVertical_bias="0.0" />
 
-    <AutoCompleteTextView
+    <android.widget.SearchView
         android:id="@+id/homeScreenSearchEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
