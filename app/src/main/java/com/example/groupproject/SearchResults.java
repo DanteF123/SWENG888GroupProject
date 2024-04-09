@@ -33,7 +33,6 @@ public class SearchResults extends AppCompatActivity {
     RecyclerView recyclerView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,10 +40,9 @@ public class SearchResults extends AppCompatActivity {
 
         favoritesButton = findViewById(R.id.favoriteButton);
 
-        recyclerView=findViewById(R.id.searchRecyclerView);
-        //
-        parkList = createFakeParkList();
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        recyclerView = findViewById(R.id.searchRecyclerView);
+       // parkList = createFakeParkList();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new SearchRecyclerAdapter(parkList);
@@ -54,23 +52,23 @@ public class SearchResults extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(adapter.favoriteParks.size()>0){
-                    Intent intent = new Intent(SearchResults.this,Favorites.class);
+                if (adapter.favoriteParks.size() > 0) {
+                    Intent intent = new Intent(SearchResults.this, Favorites.class);
                     intent.putParcelableArrayListExtra("data", (ArrayList<? extends Parcelable>) adapter.favoriteParks);
                     startActivity(intent);
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"No Favorites Selected",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "No Favorites Selected", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
 
     }
+}
 
 
     // Method to create fake park data
-    private ArrayList<Park> createFakeParkList() {
+   /* private ArrayList<Park> createFakeParkList() {
         ArrayList<Park> parkList = new ArrayList<>();
         parkList.add(new Park("Yosemite National Park", "California", "Yosemite National Park is in California’s Sierra Nevada mountains. It’s famed for its giant, ancient sequoia trees, and for Tunnel View, the iconic vista of towering Bridalveil Fall and the granite cliffs of El Capitan and Half Dome. In Yosemite Village are shops, restaurants, lodging, the Yosemite Museum and the Ansel Adams Gallery, with prints of the photographer’s renowned black-and-white landscapes of the area."));
         parkList.add(new Park("Central Park", "New York, NY", "Central Park is an urban park between the Upper West Side and Upper East Side neighborhoods of Manhattan in New York City that was the first landscaped park in the United States."));
@@ -79,7 +77,7 @@ public class SearchResults extends AppCompatActivity {
         return parkList;
     }
 
-}
+}*/
 
 
 

@@ -38,7 +38,7 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
     public void onBindViewHolder(@NonNull ParkRecyclerAdapter.ViewHolder holder, int position) {
         Park park = parks.get(position);
         holder.title.setText(park.getName());
-        holder.address.setText(park.getAddress());
+        //holder.address.setText(park.getAddress());
         holder.favorite.setImageResource(R.drawable.favorite_filled);
 
 

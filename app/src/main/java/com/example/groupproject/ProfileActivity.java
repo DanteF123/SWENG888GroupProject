@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.List;
+
 public class ProfileActivity extends BaseActivity {
 
     @Override
@@ -31,5 +33,10 @@ public class ProfileActivity extends BaseActivity {
             // For password, we don't fetch and show due to security reasons
             passwordTextView.setText("Password: ********");
         }
+    }
+
+    @Override
+    public void onParksFound(List<Park> parkList) {
+
     }
 }

@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="40dp"
-        android:text="@string/or"
+        android:text="Or"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/logInCreateAccountButton"

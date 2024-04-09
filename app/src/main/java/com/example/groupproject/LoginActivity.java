@@ -57,9 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                     passEt.getText().toString().trim()
             );
         });
-
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -69,8 +67,6 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this,"Logged out successfully", Toast.LENGTH_LONG).show();
         }
     }
-
-
     //method to log in
     private void loginEmailPassUser(String email, String pwd) {
         // Checking for empty texts
@@ -91,8 +87,8 @@ public class LoginActivity extends AppCompatActivity {
                         public void onFailure(@NonNull Exception e) {
                             // Authentication failed
                             Toast.makeText(LoginActivity.this, "Login failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+                }
+            });
         } else {
             // If either field is empty
             Toast.makeText(LoginActivity.this, "Please enter both email and password", Toast.LENGTH_LONG).show();

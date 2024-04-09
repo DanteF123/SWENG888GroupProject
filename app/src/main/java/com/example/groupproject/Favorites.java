@@ -44,6 +44,12 @@ public class Favorites extends BaseActivity {
         // Setup RecyclerView
         setupRecyclerView();
     }
+
+    @Override
+    public void onParksFound(List<Park> parkList) {
+
+    }
+
     private void setupRecyclerView() {
         recyclerView = findViewById(R.id.recyclerView);
         TextView emptyView = findViewById(R.id.empty_view);
