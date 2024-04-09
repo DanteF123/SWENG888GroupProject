@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -44,7 +45,7 @@ import java.util.List;
 /*
  * An activity that displays a map showing the place at the device's current location.
  */
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
 
     private static final String TAG = MapsActivity.class.getSimpleName();
     private GoogleMap mMap;
@@ -86,6 +87,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         //Retrieve content
         setContentView(R.layout.activity_maps);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Initialize the navigation drawer
+        initializeDrawer(toolbar);
 
         //construct PlacesClient
         Places.initialize(getApplicationContext(), getString(R.string.maps_api_key));
