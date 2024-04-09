@@ -1,5 +1,6 @@
 package com.example.groupproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,8 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -67,25 +68,31 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     //method to log in
-    private void loginEmailPassUser(
-            String email, String pwd
-    ) {
+    private void loginEmailPassUser(String email, String pwd) {
         // Checking for empty texts
-        if (!TextUtils.isEmpty(email)
-                && !TextUtils.isEmpty(pwd)
-        ) {
-            firebaseAuth.signInWithEmailAndPassword(
-                    email,
-                    pwd
-            ).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                    Intent i = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(i);
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pwd)) {
+            firebaseAuth.signInWithEmailAndPassword(email, pwd)
+                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            // Authentication succeeded
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            Intent i = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(i);
+                            finish(); // Prevents the user from going back to the login screen
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Authentication failed
+                            Toast.makeText(LoginActivity.this, "Login failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
+        } else {
+            // If either field is empty
+            Toast.makeText(LoginActivity.this, "Please enter both email and password", Toast.LENGTH_LONG).show();
         }
     }
+
 }

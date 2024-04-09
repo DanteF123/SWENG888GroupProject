@@ -11,8 +11,8 @@ import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +31,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, ParkFinderCallback{
+//public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, ParkFinderCallback{
+/*
+ * An activity that displays a map showing the place at the device's current location.
+ */
+public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_CODE = 1001;
     private GoogleMap mMap;
@@ -62,6 +66,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mSearchView = findViewById(R.id.idSearchView);
         /** Include a listener to the searchView */
         createSearchViewListener();
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Initialize the navigation drawer
+        initializeDrawer(toolbar);
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

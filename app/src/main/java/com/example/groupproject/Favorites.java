@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
+import androidx.appcompat.widget.Toolbar;
 import java.util.List;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,13 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-
-
-
-public class Favorites extends AppCompatActivity {
+public class Favorites extends BaseActivity {
     private ParkRecyclerAdapter adapter;
 
     private ArrayList<Park> parkList = new ArrayList<>();
@@ -36,19 +35,43 @@ public class Favorites extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_favorites);
 
-        recyclerView=findViewById(R.id.recyclerView);
+        // Set up the toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        initializeDrawer(toolbar);
 
-        parkList = getIntent().getParcelableArrayListExtra("data");
+        // Setup RecyclerView
+        setupRecyclerView();
+    }
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        recyclerView.setLayoutManager(layoutManager);
-
-        adapter = new ParkRecyclerAdapter(parkList);
-        recyclerView.setAdapter(adapter);
-
+    @Override
+    public void onParksFound(List<Park> parkList) {
 
     }
 
+    private void setupRecyclerView() {
+        recyclerView = findViewById(R.id.recyclerView);
+        TextView emptyView = findViewById(R.id.empty_view);
+
+        parkList = getIntent().getParcelableArrayListExtra("data");
+        if (parkList == null) {
+            parkList = new ArrayList<>();
+        }
+
+        if (parkList.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+            recyclerView.setLayoutManager(layoutManager);
+
+            adapter = new ParkRecyclerAdapter(parkList);
+            recyclerView.setAdapter(adapter);
+        }
+    }
 
 }

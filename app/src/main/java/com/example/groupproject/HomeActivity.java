@@ -11,7 +11,11 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,15 +25,20 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.FetchPlaceResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+
+public class HomeActivity extends BaseActivity {
 
     private FirebaseAuth mAuth;
-    private Button mUseMyLocationButton,searchButton, favorites, logOut;
+    private Button mUseMyLocationButton,searchButton, logOut;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggle;
     private SearchView mSearchView;
     AutoCompleteAdapter adapter;
     TextView responseView;
@@ -41,10 +50,21 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
 
+        // Set up the toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        initializeDrawer(toolbar);
+
+        // Setup Nav Drawer
+        drawerLayout = findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
         logOut=(Button) findViewById(R.id.logOutButton);
         mUseMyLocationButton = (Button) findViewById(R.id.UseMyLocationButton);
         searchButton = (Button) findViewById(R.id.searchButton);
-        favorites = (Button) findViewById(R.id.favoritesButton);
         mAuth = FirebaseAuth.getInstance();
         mUseMyLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,15 +73,6 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        favorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), Favorites.class);
-                startActivity(intent);
-            }
-        });
-
      searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,9 +89,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        responseView = findViewById(R.id.response);
+        responseView = findViewById(R.id.option_get_place);
 
-        String apiKey = getString(R.string.api_key);
+        String apiKey = getString(R.string.maps_api_key);
         if (apiKey.isEmpty()) {
             responseView.setText(getString(R.string.error));
             return;
@@ -174,5 +185,10 @@ public class HomeActivity extends AppCompatActivity {
         Intent i = new Intent(HomeActivity.this, LoginActivity.class);
         i.putExtra("logout", true);
         startActivity(i);
+    }
+
+    @Override
+    public void onParksFound(List<Park> parkList) {
+
     }
 }
