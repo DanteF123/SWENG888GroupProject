@@ -14,7 +14,6 @@
         android:layout_marginTop="135dp"
         android:layout_marginBottom="138dp"
         android:text="Email"
-
         android:textColor="#FFFFFF"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/logInPasswordTextView"
@@ -30,6 +29,8 @@
         android:layout_marginEnd="49dp"
         android:background="#E3D7D7"
         android:hint="Enter your email"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logInEmailTextView" />
@@ -57,6 +58,8 @@
         android:layout_marginEnd="49dp"
         android:background="#E3D7D7"
         android:hint="@string/enter_your_password"
+        android:textColorHint="@color/gray"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logInPasswordTextView" />
@@ -68,9 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="273dp"
         android:text="@string/Password"
-
         android:textColor="#FFFFFF"
-
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="@+id/loginEditTextPassword"
         app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="40dp"
-        android:text="@string/or"
+        android:text="Or"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/logInCreateAccountButton"

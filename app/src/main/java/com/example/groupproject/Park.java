@@ -9,21 +9,22 @@ import java.io.Serializable;
 
 public class Park implements Serializable, Parcelable {
     private String name;
-    private String address;
-    private String description;
+    private double latitude;
+    private double longitude;
+
     private boolean favorite;
 
-    public Park(String name, String city, String description) {
+    public Park(String name, double latitude, double longitude) {
         this.name = name;
-        this.address = city;
-        this.description = description;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.favorite = false;
     }
 
     protected Park(Parcel in) {
         name = in.readString();
-        address = in.readString();
-        description = in.readString();
+        longitude = Double.parseDouble(in.readString());
+        latitude = Double.parseDouble(in.readString());
         favorite = in.readByte() != 0;
     }
 
@@ -43,12 +44,12 @@ public class Park implements Serializable, Parcelable {
         return name;
     }
 
-    public String getAddress() {
-        return address;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public String getDescription() {
-        return description;
+    public double getLongitude() {
+        return longitude;
     }
 
     public boolean isFavorite() { return favorite; }
@@ -63,8 +64,8 @@ public class Park implements Serializable, Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeString(address);
-        dest.writeString(description);
+        dest.writeString(String.valueOf(longitude));
+        dest.writeString(String.valueOf(latitude));
         dest.writeByte((byte) (favorite ? 1 : 0));
     }
 }

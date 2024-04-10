@@ -43,7 +43,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
     public void onBindViewHolder(@NonNull SearchRecyclerAdapter.ViewHolder holder, int position) {
         Park park = parks.get(position);
         holder.title.setText(park.getName());
-        holder.address.setText(park.getAddress());
+        //holder.address.setText(park.getAddress());
 
         if(parks.get(position).isFavorite()){
             holder.favorite.setImageResource(R.drawable.favorite_filled);
