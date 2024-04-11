@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:layout_margin="10dp"
-    android:orientation="vertical">
+    android:background="@color/green"
+    android:orientation="horizontal">
 
 
     <TextView
@@ -14,10 +15,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
+        android:textColor="@color/white"
         android:text="Park"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/filledFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/favorite_empty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 

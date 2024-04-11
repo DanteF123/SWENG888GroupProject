@@ -21,6 +21,8 @@ public class Park implements Serializable, Parcelable {
         this.favorite = false;
     }
 
+    public Park(){}
+
     protected Park(Parcel in) {
         name = in.readString();
         longitude = Double.parseDouble(in.readString());
