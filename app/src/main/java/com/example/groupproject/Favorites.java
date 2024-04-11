@@ -84,6 +84,7 @@ public class Favorites extends BaseActivity {
     private void setFirebaseRecycler(){
 
         recyclerView = findViewById(R.id.recyclerView);
+        TextView emptyView = findViewById(R.id.empty_view);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -102,6 +103,20 @@ public class Favorites extends BaseActivity {
                     Park park = parks.toObject(Park.class);
                     mParkList.add(park);
 
+                }
+
+                if (mParkList.isEmpty()) {
+                    recyclerView.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.VISIBLE);
+                } else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    emptyView.setVisibility(View.GONE);
+
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                    recyclerView.setLayoutManager(layoutManager);
+
+                    adapter = new ParkRecyclerAdapter(parkList);
+                    recyclerView.setAdapter(adapter);
                 }
 
 

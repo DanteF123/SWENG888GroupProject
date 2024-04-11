@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -67,7 +66,7 @@ public class SearchRecyclerAdapter extends RecyclerView.Adapter<SearchRecyclerAd
 
             title=itemView.findViewById(R.id.textViewParkName);
             address = itemView.findViewById(R.id.textViewParkLoc);
-            favorite=itemView.findViewById(R.id.filledFavorite);
+            favorite=itemView.findViewById(R.id.parkListFavorite);
 
             favorite.setOnClickListener(new View.OnClickListener() {
                 @Override

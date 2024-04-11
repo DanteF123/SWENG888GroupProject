@@ -236,7 +236,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     public void onParksFound(List<Park> parkList) {
         if (parkList != null && !parkList.isEmpty()) {
             if (mAdapter == null) {
-                mAdapter = new ParkAdapter(parkList);
+                mAdapter = new ParkAdapter(parkList,getApplicationContext());
                 mRecyclerView.setAdapter(mAdapter);
             } else {
                 mAdapter.updateData(parkList); // Create a method in your adapter to update the dataset
