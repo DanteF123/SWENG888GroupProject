@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
-    EditText email_create, password_create, user_create;
+    EditText email_create, password_create;
     Button createButton;
 
 
@@ -41,7 +41,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         createButton = findViewById(R.id.CreateAccount);
         password_create = findViewById(R.id.createAccountPW);
         email_create = findViewById(R.id.createAccountEditTextEmail);
-        user_create = findViewById(R.id.editTextCreateAccountUsername);
 
         //Firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
@@ -65,13 +64,12 @@ public class CreateAccountActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(email_create.getText().toString())&& !TextUtils.isEmpty(user_create.getText().toString()) && !TextUtils.isEmpty(password_create.getText().toString())){
+                if(!TextUtils.isEmpty(email_create.getText().toString()) && !TextUtils.isEmpty(password_create.getText().toString())){
 
                     String email = email_create.getText().toString().trim();
                     String pass = password_create.getText().toString().trim();
-                    String username = user_create.getText().toString().trim();
 
-                    CreateUserEmailAccount(email,pass,username);
+                    CreateUserEmailAccount(email,pass);
                 }else{
                     Toast.makeText(CreateAccountActivity.this, "No fields can be empty", Toast.LENGTH_SHORT).show();
                 }
@@ -81,16 +79,15 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private void CreateUserEmailAccount(
             String email,
-            String pass,
-            String username
+            String pass
     ){
-        if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(username)){
+        if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)){
             firebaseAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         //user is created successfully
-                        Toast.makeText(CreateAccountActivity.this, "user is created", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateAccountActivity.this, email+" is created", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

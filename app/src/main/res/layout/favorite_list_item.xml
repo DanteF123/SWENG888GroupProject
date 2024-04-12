@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:background="@color/green"
     android:orientation="horizontal"
     >
@@ -20,28 +20,28 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/filledFavorite"
+        app:layout_constraintEnd_toStartOf="@+id/parkListFavorite"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.217" />
 
-    <TextView
-        android:id="@+id/textViewParkLoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Park City"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+<!--    <TextView-->
+<!--        android:id="@+id/textViewParkLoc"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:text="Park City"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="14sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
 
-        app:layout_constraintStart_toStartOf="@+id/textViewParkName"
-        app:layout_constraintTop_toBottomOf="@+id/textViewParkName" />
+<!--        app:layout_constraintStart_toStartOf="@+id/textViewParkName"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textViewParkName" />-->
 
     <ImageButton
-        android:id="@+id/filledFavorite"
+        android:id="@+id/parkListFavorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"

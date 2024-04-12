@@ -5,17 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
 public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapter.ViewHolder> {
     private ArrayList<Park> parks;
     private Context context;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference mCollectionReference = db.collection("Favorites");
 
     public ParkRecyclerAdapter(ArrayList<Park> parks,Context context){
         this.parks=parks;
@@ -58,7 +65,7 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
 
             title=itemView.findViewById(R.id.textViewParkName);
             address = itemView.findViewById(R.id.textViewParkLoc);
-            favorite=itemView.findViewById(R.id.filledFavorite);
+            favorite=itemView.findViewById(R.id.parkListFavorite);
 
             favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,7 +81,20 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
 
     }
     public void changeFavorite(int index){
-        parks.remove(parks.get(index));
+        String park = parks.get(index).getName();
+        db.collection("Favorites").document(park).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                parks.remove(index);
+                notifyDataSetChanged();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context,"Error deleting Document.",Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 

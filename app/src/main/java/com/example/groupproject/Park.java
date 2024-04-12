@@ -21,6 +21,8 @@ public class Park implements Serializable, Parcelable {
         this.favorite = false;
     }
 
+    public Park(){}
+
     protected Park(Parcel in) {
         name = in.readString();
         longitude = Double.parseDouble(in.readString());
@@ -67,5 +69,13 @@ public class Park implements Serializable, Parcelable {
         dest.writeString(String.valueOf(longitude));
         dest.writeString(String.valueOf(latitude));
         dest.writeByte((byte) (favorite ? 1 : 0));
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Park park = (Park) obj;
+        return name.equals(park.name);
     }
 }
