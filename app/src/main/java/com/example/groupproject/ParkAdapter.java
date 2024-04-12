@@ -73,6 +73,9 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ViewHolder> {
         return parks.size();
     }
 
+
+
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView name;
         public ImageButton favorite;
@@ -81,6 +84,8 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ViewHolder> {
             super(itemView);
             name = itemView.findViewById(R.id.parkText);
             favorite=itemView.findViewById(R.id.parkListFavorite);
+
+
 
             favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -99,6 +104,7 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ViewHolder> {
 
                 }
             });
+
         }
 
 

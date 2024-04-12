@@ -19,30 +19,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/editTextCreateAccountEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="151dp"
+        android:layout_marginBottom="150dp"
+
+        android:text="Email"
+
+
+        android:textColor="#FFFFFF"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextCreateAccountPassword"
+        app:layout_constraintStart_toStartOf="@+id/createAccountEditTextEmail"
+        app:layout_constraintTop_toTopOf="@+id/createAccountTextView" />
 
     <EditText
         android:id="@+id/createAccountEditTextEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="49dp"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="49dp"
-        android:layout_marginBottom="48dp"
         android:background="#E3D7D7"
         android:hint="Enter your email"
-        app:layout_constraintBottom_toTopOf="@+id/createAccountUserNameTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/createAccountUserNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/Username"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextCreateAccountUsername"
-        app:layout_constraintStart_toStartOf="@+id/editTextCreateAccountUsername" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCreateAccountEmail" />
 
     <EditText
         android:id="@+id/createAccountPW"
@@ -52,7 +56,7 @@
         android:layout_marginTop="17dp"
         android:layout_marginEnd="49dp"
         android:background="#E3D7D7"
-        android:hint="@+id/enter_your_password"
+        android:hint="Enter your passwors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCreateAccountPassword" />
@@ -61,27 +65,14 @@
         android:id="@+id/editTextCreateAccountPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
         android:text="@string/Password"
         android:textColor="#FFFFFF"
 
         android:textSize="15dp"
+
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/createAccountPW"
-
-
-        app:layout_constraintTop_toBottomOf="@+id/editTextCreateAccountUsername" />
-
-    <EditText
-        android:id="@+id/editTextCreateAccountUsername"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="284dp"
-        android:layout_marginEnd="49dp"
-        android:background="#E3D7D7"
-        android:hint="@+id/enter_your_username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
