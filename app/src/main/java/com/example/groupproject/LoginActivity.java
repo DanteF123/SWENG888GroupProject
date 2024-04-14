@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSuccess(AuthResult authResult) {
                             // Authentication succeeded
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-                            Intent i = new Intent(LoginActivity.this, HomeActivity.class);
+                            Intent i = new Intent(LoginActivity.this, MapsActivity.class);
                             startActivity(i);
                             finish(); // Prevents the user from going back to the login screen
                         }
