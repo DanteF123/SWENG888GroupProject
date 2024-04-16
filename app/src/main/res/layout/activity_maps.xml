@@ -12,6 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_toolbar"/>
+
         <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -19,7 +23,7 @@
             android:layout_height="496dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             tools:context=".MapsActivity" />
 
         <!--search view to search our location-->
@@ -27,7 +31,7 @@
             android:id="@+id/idSearchView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/black"
             android:layout_marginStart="9dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="9dp"
@@ -38,7 +42,7 @@
             app:layout_constraintBottom_toTopOf="@+id/recyclerView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:queryHint="Search Here" />
 
         <androidx.recyclerview.widget.RecyclerView
