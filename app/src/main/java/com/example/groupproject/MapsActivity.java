@@ -2,11 +2,13 @@ package com.example.groupproject;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -31,11 +33,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-//public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, ParkFinderCallback{
 /*
  * An activity that displays a map showing the place at the device's current location.
  */
-public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
+public class MapsActivity extends BaseActivity implements OnMapReadyCallback, ParkNavigationListener {
 
     private static final int REQUEST_CODE = 1001;
     private GoogleMap mMap;
@@ -236,7 +237,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     public void onParksFound(List<Park> parkList) {
         if (parkList != null && !parkList.isEmpty()) {
             if (mAdapter == null) {
-                mAdapter = new ParkAdapter(parkList,getApplicationContext());
+                mAdapter = new ParkAdapter(parkList,getApplicationContext(),this);
                 mRecyclerView.setAdapter(mAdapter);
             } else {
                 mAdapter.updateData(parkList); // Create a method in your adapter to update the dataset
@@ -248,4 +249,16 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
         }
 
     }
+
+    public void navigateToPark(Park park) {
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + park.getLatitude() + "," + park.getLongitude());
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        } else {
+            Toast.makeText(this, "Google Maps is not installed.", Toast.LENGTH_LONG).show();
+        }
+    }
+
 }

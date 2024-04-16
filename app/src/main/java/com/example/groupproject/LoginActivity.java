@@ -2,11 +2,15 @@ package com.example.groupproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -34,6 +38,13 @@ public class LoginActivity extends AppCompatActivity {
 
         logIn = findViewById(R.id.logInLogInButton);
         createAccount = findViewById(R.id.logInCreateAccountButton);
+
+        // Change the status bar color to match toolbar
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.dark_green));
+        }
 
         //User creating an account
         createAccount.setOnClickListener(new View.OnClickListener() {

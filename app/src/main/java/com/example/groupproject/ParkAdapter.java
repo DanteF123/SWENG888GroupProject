@@ -3,11 +3,12 @@
 
 package com.example.groupproject;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.common.base.MoreObjects;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -35,14 +35,16 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ViewHolder> {
     private List<Park> parks;
     private List<Park> favoriteParks;
     private Context mContext;
+    private ParkNavigationListener navigationListener;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference mCollectionReference = db.collection("Favorites");
 
-    public ParkAdapter(List<Park> parks, Context context){
+    public ParkAdapter(List<Park> parks, Context context, ParkNavigationListener listener){
         this.parks=parks;
         this.mContext=context;
         this.favoriteParks=new ArrayList<>();
+        this.navigationListener = listener;
     }
 
     @NonNull
@@ -74,16 +76,16 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ViewHolder> {
     }
 
 
-
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView name;
         public ImageButton favorite;
+        public ImageButton navigation;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.parkText);
             favorite=itemView.findViewById(R.id.parkListFavorite);
+            navigation=itemView.findViewById(R.id.parkNavigate);
 
 
 
@@ -105,8 +107,17 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ViewHolder> {
                 }
             });
 
-        }
+            navigation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (navigationListener != null) {
+                        Park selectedPark = parks.get(getAdapterPosition());
+                        navigationListener.navigateToPark(selectedPark);
+                    }
+                }
+            });
 
+        }
 
     }
 
@@ -163,7 +174,13 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ViewHolder> {
         Park selectedPark = parks.get(index);
 
         String parkName = selectedPark.getName();
+        double latitude = selectedPark.getLatitude();
+        double longitude = selectedPark.getLongitude();
+
+        // Store name & location data
         parkHashmap.put("name",parkName);
+        parkHashmap.put("latitude", latitude);
+        parkHashmap.put("longitude", longitude);
 
         DocumentReference documentReference = mCollectionReference.document(selectedPark.getName());
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -176,6 +193,7 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ViewHolder> {
                     documentReference.set(parkHashmap).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
+                            Toast.makeText(mContext, "Park added to favorites", Toast.LENGTH_SHORT).show();
                             notifyItemChanged(index);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -191,7 +209,6 @@ public class ParkAdapter extends RecyclerView.Adapter<ParkAdapter.ViewHolder> {
 
 
     }
-
 
 
 }

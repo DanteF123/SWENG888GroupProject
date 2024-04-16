@@ -23,13 +23,16 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
     private Context context;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference mCollectionReference = db.collection("Favorites");
+    private ParkNavigationListener navigationListener;
 
-    public ParkRecyclerAdapter(ArrayList<Park> parks,Context context){
+    public ParkRecyclerAdapter(ArrayList<Park> parks,Context context, ParkNavigationListener navigationListener){
         this.parks=parks;
         this.context=context;
+        this.navigationListener = navigationListener;
     }
-    public ParkRecyclerAdapter(ArrayList<Park> parks){
+    public ParkRecyclerAdapter(ArrayList<Park> parks, ParkNavigationListener navigationListener){
         this.parks=parks;
+        this.navigationListener = navigationListener;
 
     }
 
@@ -59,13 +62,14 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView title,address;
-        ImageButton favorite;
+        ImageButton favorite, navigation;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title=itemView.findViewById(R.id.textViewParkName);
             address = itemView.findViewById(R.id.textViewParkLoc);
             favorite=itemView.findViewById(R.id.parkListFavorite);
+            navigation = itemView.findViewById(R.id.parkNavigate);
 
             favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,6 +78,16 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
                     //if you click the favorite button, remove the item from the list.
                     changeFavorite(getAdapterPosition());
                     notifyDataSetChanged();
+                }
+            });
+
+            navigation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (navigationListener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                        Park selectedPark = parks.get(getAdapterPosition());
+                        navigationListener.navigateToPark(selectedPark);
+                    }
                 }
             });
 

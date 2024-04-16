@@ -24,8 +24,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import android.content.Intent;
+import android.net.Uri;
 
-public class Favorites extends BaseActivity {
+
+public class Favorites extends BaseActivity implements ParkNavigationListener {
     private ParkRecyclerAdapter adapter;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference mCollectionReference = db.collection("Favorites");
@@ -76,7 +79,7 @@ public class Favorites extends BaseActivity {
             LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(layoutManager);
 
-            adapter = new ParkRecyclerAdapter(parkList);
+            adapter = new ParkRecyclerAdapter(parkList, this);
             recyclerView.setAdapter(adapter);
         }
     }
@@ -89,7 +92,7 @@ public class Favorites extends BaseActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new ParkRecyclerAdapter(parkList);
+        adapter = new ParkRecyclerAdapter(parkList, this);
         recyclerView.setAdapter(adapter);
 
         mParkList = new ArrayList<>();
@@ -115,12 +118,12 @@ public class Favorites extends BaseActivity {
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
                     recyclerView.setLayoutManager(layoutManager);
 
-                    adapter = new ParkRecyclerAdapter(parkList);
+                    adapter = new ParkRecyclerAdapter(parkList, Favorites.this);
                     recyclerView.setAdapter(adapter);
                 }
 
 
-                adapter= new ParkRecyclerAdapter((ArrayList<Park>) mParkList);
+                adapter= new ParkRecyclerAdapter((ArrayList<Park>) mParkList, Favorites.this);
                 recyclerView.setAdapter(adapter);
 
                 adapter.notifyDataSetChanged();
@@ -137,6 +140,18 @@ public class Favorites extends BaseActivity {
         });
 
 
+    }
+
+    @Override
+    public void navigateToPark(Park park) {
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + park.getLatitude() + "," + park.getLongitude());
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        } else {
+            Toast.makeText(this, "Google Maps is not installed.", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

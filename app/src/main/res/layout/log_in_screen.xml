@@ -45,6 +45,7 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:text="Or"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
@@ -92,8 +93,10 @@
         android:id="@+id/logInCreateAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="73dp"
+        android:layout_marginBottom="180dp"
         android:text="@string/Button1"
+        android:backgroundTint="@color/dark_green"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -103,8 +106,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="39dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/Button4"
+        android:backgroundTint="@color/dark_green"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/logInCreateAccountButton" />
 

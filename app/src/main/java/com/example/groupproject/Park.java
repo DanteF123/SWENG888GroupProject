@@ -78,4 +78,5 @@ public class Park implements Serializable, Parcelable {
         Park park = (Park) obj;
         return name.equals(park.name);
     }
+
 }
