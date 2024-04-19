@@ -44,6 +44,7 @@ Alternatively, see the GitHub documentation on creating a pull request.
 ## Contributors
 Thanks to the following people who have contributed to this project:
 
+@DanteF123
 @scram91
 @ryannnemi
 
