@@ -10,32 +10,13 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\scc51\.android\avd\Pixel_6_API_26.avd" />
+                  <value value="C:\Users\theyc\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-02-09T21:48:18.932027300Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-04-20T21:05:25.924138800Z" />
         </State>
-      </entry>
-      <entry key="map testing">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\scc51\.android\avd\Pixel_6_API_26.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-02-16T17:30:04.173650500Z" />
-        </State>
-      </entry>
-      <entry key="searching">
-        <State />
       </entry>
     </value>
   </component>
