@@ -69,6 +69,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     String email = email_create.getText().toString().trim();
                     String pass = password_create.getText().toString().trim();
 
+                    // Call method with email and password
                     CreateUserEmailAccount(email,pass);
                 }else{
                     Toast.makeText(CreateAccountActivity.this, "No fields can be empty", Toast.LENGTH_SHORT).show();
@@ -77,6 +78,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         });
     }
 
+    //Method to log user in
     private void CreateUserEmailAccount(
             String email,
             String pass

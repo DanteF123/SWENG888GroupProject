@@ -59,31 +59,7 @@ public class Favorites extends BaseActivity implements ParkNavigationListener {
     public void onParksFound(List<Park> parkList) {
 
     }
-
-    private void setupRecyclerView() {
-        recyclerView = findViewById(R.id.recyclerView);
-        TextView emptyView = findViewById(R.id.empty_view);
-
-        parkList = getIntent().getParcelableArrayListExtra("data");
-        if (parkList == null) {
-            parkList = new ArrayList<>();
-        }
-
-        if (parkList.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
-            emptyView.setVisibility(View.VISIBLE);
-        } else {
-            recyclerView.setVisibility(View.VISIBLE);
-            emptyView.setVisibility(View.GONE);
-
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-            recyclerView.setLayoutManager(layoutManager);
-
-            adapter = new ParkRecyclerAdapter(parkList, this);
-            recyclerView.setAdapter(adapter);
-        }
-    }
-
+    //Method to attach data to recyclerview using firebase.
     private void setFirebaseRecycler(){
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -98,6 +74,7 @@ public class Favorites extends BaseActivity implements ParkNavigationListener {
         mParkList = new ArrayList<>();
 
 
+        // Obtain data from collection
         mCollectionReference.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

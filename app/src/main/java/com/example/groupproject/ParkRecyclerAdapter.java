@@ -48,7 +48,6 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
     public void onBindViewHolder(@NonNull ParkRecyclerAdapter.ViewHolder holder, int position) {
         Park park = parks.get(position);
         holder.title.setText(park.getName());
-        //holder.address.setText(park.getAddress());
         holder.favorite.setImageResource(R.drawable.favorite_filled);
 
 
@@ -94,6 +93,7 @@ public class ParkRecyclerAdapter extends RecyclerView.Adapter<ParkRecyclerAdapte
         }
 
     }
+    // Method called when favorite state is changed.
     public void changeFavorite(int index){
         String park = parks.get(index).getName();
         db.collection("Favorites").document(park).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
